@@ -47,6 +47,13 @@ from random import choice
 #    print("It's a tie!")
 #
 def determine_winner(user_choice, computer_choice):
+    """
+    This is a docstring. It tells us who the winner is. It takes inputs "rock" "paper" or "scissors"
+    and will return a winner between the computer and the user. 
+
+
+    Example: determine_winner("rock", "paper")
+    """
     #return "paper"
     winners = {
         "rock": {

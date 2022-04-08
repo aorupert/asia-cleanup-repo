@@ -3,23 +3,27 @@
 
 print("CRYPTO REPORT...")
 
-import os
-import json
-from dotenv import load_dotenv
-import requests
+#import os
+#import json
+#from dotenv import load_dotenv
+#import requests
 
-load_dotenv()
+from app.alphavantage_service import fetch_crypto
 
-ALPHAVANTAGE_API_KEY = os.getenv("ALPHAVANTAGE_API_KEY", default="demo")
+#load_dotenv()
 
+#ALPHAVANTAGE_API_KEY = os.getenv("ALPHAVANTAGE_API_KEY", default="demo")
+#
 symbol = input("Please input a crypto symbol (default: 'BTC'): ") or "BTC"
-url = f"https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&market=USD&symbol={symbol}&apikey={ALPHAVANTAGE_API_KEY}"
-response = requests.get(url)
-parsed_response = json.loads(response.text)
-#print(parsed_response)
-#breakpoint()
+tsd = fetch_crypto(symbol)
 
-tsd = parsed_response["Time Series (Digital Currency Daily)"]
+#url = f"https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&market=USD&symbol={symbol}&apikey={ALPHAVANTAGE_API_KEY}"
+#response = requests.get(url)
+#parsed_response = json.loads(response.text)
+##print(parsed_response)
+##breakpoint()
+
+#tsd = parsed_response["Time Series (Digital Currency Daily)"]
 
 dates = list(tsd.keys())
 latest_date = dates[0]
